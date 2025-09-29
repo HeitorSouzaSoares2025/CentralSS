@@ -1,0 +1,210 @@
+/* ==================== ESTILOS GERAIS ==================== */
+body {
+    font-family: 'Inter', system-ui;  /* Fonte principal */
+    background: #000;                 /* Fundo padrão escuro */
+    color: #e6eef0;                    /* Cor do texto padrão */
+    margin: 0;                         /* Remove margem padrão do body */
+}
+
+/* ==================== LOADER ==================== */
+/* Tela de carregamento (cobre a tela toda) */
+.global-loader {
+    position: fixed;
+    inset: 0;                          /* top, right, bottom, left = 0 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, .9);     /* Fundo preto semi-transparente */
+    z-index: 9999;                      /* Fica acima de tudo */
+}
+
+/* Esconde o loader quando a classe .hidden é adicionada via JS */
+.global-loader.hidden { 
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Texto do loader */
+.loader-text {
+    color: #bfffe8;
+    font-weight: 600;
+}
+
+
+/* ==================== CARD BASE ==================== */
+/* Estrutura do card */
+.project-card {
+    background: transparent;                     /* sem cor de fundo */
+    border-radius: 12px;                          /* cantos arredondados */
+    position: relative;
+    overflow: hidden;                              /* nada sai das bordas */
+    cursor: pointer;
+    border: 2px solid rgba(0, 255, 204, 0.25);     /* borda levemente ciano */
+    transition: border .3s ease, transform .3s ease;  /* animação suave */
+}
+
+/* Efeito de “levantar” no hover */
+.project-card:hover { 
+    transform: translateY(-2px); 
+}
+
+/* ==================== FAVORITOS ==================== */
+/* Card favoritado recebe borda dourada e glow */
+.project-card.favorited {
+    border: 3px solid gold;
+    box-shadow: 0 0 18px gold, 0 0 30px rgba(255, 215, 0, 0.4);
+}
+
+
+/* ==================== FUNDO DO CARD ==================== */
+/* Camada de fundo (imagem) do card */
+.card-bg {
+    position: absolute;
+    inset: 0;               /* ocupa todo o card */
+    opacity: .25;           /* levemente visível */
+    transition: .4s;        /* animação suave */
+    z-index: 0;             /* atrás do conteúdo */
+}
+
+/* Efeito ao passar o mouse: aumenta levemente e fica mais visível */
+.project-card:hover .card-bg {
+    opacity: .35;
+    transform: scale(1.03);
+}
+
+/* Imagens de fundo específicas para cada projeto */
+.estacao .card-bg {
+    background: url("../imagens/img-estacao.jpg") center/cover no-repeat;
+}
+
+.d2fa .card-bg {
+    background: url("../imagens/img-d2fa.jpg") center/cover no-repeat;
+}
+
+.site-pessoal .card-bg {
+    background: url("../imagens/img-heitorss.jpg") center/cover no-repeat;
+}
+
+.todo-list .card-bg {
+    background: url("../imagens/img-todolist.jpg") center/cover no-repeat;
+}
+
+.portfolio .card-bg {
+    background: url("../imagens/img-portifolio.jpg") center/cover no-repeat;
+}
+
+
+/* ==================== CONTEÚDO DO CARD ==================== */
+/* Conteúdo do card fica acima do fundo */
+.card-content { 
+    position: relative; 
+    z-index: 2; 
+}
+
+
+/* ==================== BOTÃO DE FAVORITO ==================== */
+.fav-btn {
+    position: absolute;
+    top: 10px; right: 10px;          /* canto superior direito */
+    font-size: 1.4rem;
+    background: none;
+    border: none;
+    color: #888;                     /* cor padrão cinza */
+    cursor: pointer;
+    z-index: 3;                       /* acima do conteúdo */
+    transition: transform .2s ease;   /* animação no hover */
+}
+
+/* Quando ativo (favorito) fica dourado */
+.fav-btn.active{
+    color: gold;
+}
+
+/* Efeito de leve aumento no hover */
+.fav-btn:hover { 
+    transform: scale(1.2); 
+}
+
+/* Estado favorito alternativo (se usado em JS) */
+.fav-btn.fav { 
+    color: gold; 
+}
+
+
+/* ==================== BADGE DE STATUS ==================== */
+.status-container { 
+    margin-top: .5rem; 
+    text-align: center; 
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;                      /* espaço entre ícone e texto */
+    padding: .3rem .8rem;
+    border-radius: 999px;            /* badge arredondado */
+    font-weight: 600;
+    color: #fff;
+    font-size: .9rem;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
+    transition: background .3s ease; /* suaviza mudança de cor */
+}
+
+.status-icon { font-size: 1rem; }
+
+.latency, .last-check {
+    font-size: .75rem;
+    margin-top: .2rem;
+    color: #9ca3af;                  /* cinza suave */
+}
+
+
+/* ==================== MODAL / PREVIEW ==================== */
+/* Caixa de preview (fixo na tela, se for usada) */
+.preview-box {
+    position: fixed;
+    z-index: 60;
+    width: 320px;
+    max-width: calc(100vw - 24px);
+    max-height: 80vh;
+    overflow-y: auto;
+    background: rgba(2, 6, 23, .92);                  /* azul escuro semi-transparente */
+    border: 1px solid rgba(34, 197, 94, .1);           /* borda levemente verde */
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .6);
+    color: #dffcf4;
+    display: none;                                     /* escondido por padrão */
+}
+
+/* Barra de rolagem personalizada no preview */
+.preview-box::-webkit-scrollbar { width: 6px; }
+.preview-box::-webkit-scrollbar-thumb {
+    background: rgba(34, 197, 94, 0.5);
+    border-radius: 3px;
+}
+
+/* Imagens no preview */
+.preview-box img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    background: #111;   /* fallback se não houver imagem */
+}
+
+
+/* ==================== MODAL DE IMAGEM ==================== */
+#modalImg {
+    background: #111;
+    object-fit: cover;      /* mantém proporção, cortando excesso */
+    border-radius: 6px;
+}
+
+
+/* ==================== TEMA CLARO ==================== */
+body.light-mode {
+    background: #f8fafc;    /* fundo claro */
+    color: #0f172a;         /* texto escuro */
+}

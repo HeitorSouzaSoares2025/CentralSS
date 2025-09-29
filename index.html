@@ -1,0 +1,264 @@
+<!DOCTYPE html> <!-- Define o documento como HTML5 -->
+<html lang="pt-BR"> <!-- Define o idioma principal da página como português do Brasil -->
+
+<head>
+  <meta charset="utf-8" /> <!-- Permite usar caracteres acentuados e emojis -->
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- Ajusta a página para telas menores (responsividade) -->
+
+  <meta name="description" content="Central de Projetos de Heitor – acesse e gerencie seus projetos em um só lugar.">
+  <!-- Breve descrição do site para mecanismos de busca -->
+
+  <meta name="robots" content="index,follow">
+  <!-- Permite que os motores de busca indexem a página e sigam os links -->
+
+  <title>Central de Projetos – Heitor</title> <!-- Título exibido na aba do navegador -->
+
+  <!-- Importação do Tailwind CSS (facilita a estilização com classes utilitárias) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Arquivo CSS próprio do projeto -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- ======================== LOADER ======================== -->
+  <!-- Tela de carregamento enquanto a página é carregada -->
+  <div id="globalLoader" class="global-loader" role="status" aria-label="Carregando página">
+    <div class="loader-text">Carregando...</div>
+  </div>
+
+  <!-- ======================== HEADER ======================== -->
+  <!-- Cabeçalho fixo no topo -->
+  <header class="fixed top-0 w-full bg-black/90 backdrop-blur-md border-b border-green-500 z-50">
+    <div class="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
+      <!-- Logo / Nome do site -->
+      <a href="#" class="text-2xl font-bold text-green-400 hover:text-green-300">
+        HSS<span class="text-white">Central</span>
+      </a>
+
+      <!-- Botão para alternar tema (claro/escuro) -->
+      <button id="themeToggle" class="p-2 rounded-md" aria-label="Alternar tema claro/escuro">🌙</button>
+    </div>
+  </header>
+
+  <!-- ======================== HERO ======================== -->
+  <!-- Seção inicial de destaque -->
+  <section class="pt-24 pb-12 bg-gradient-to-r from-black via-gray-900 to-black text-center">
+    <h1 class="text-4xl font-bold mb-4 text-green-400">Central de Projetos</h1>
+    <p class="text-lg max-w-xl mx-auto text-gray-300">
+      Acesse todos os meus projetos em um único lugar.
+    </p>
+  </section>
+
+  <!-- ======================== SEARCH ======================== -->
+  <!-- Campo de busca dos projetos -->
+  <section class="max-w-6xl mx-auto px-4 py-6 text-center">
+    <label for="searchInput" class="sr-only">Buscar projetos</label>
+    <!-- Input de pesquisa -->
+    <input type="text" id="searchInput" placeholder="🔎 Buscar projetos..."
+      class="w-full sm:w-1/2 px-4 py-2 rounded-lg bg-gray-900 text-gray-200 border border-green-500 focus:outline-none focus:ring-2 focus:ring-green-400">
+  </section>
+
+  <!-- ======================== CARDS DE PROJETOS ======================== -->
+  <main id="projetos" class="max-w-6xl mx-auto px-4 py-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    
+    <!-- ==================== CARD: ESTAÇÃO METEOROLÓGICA ==================== -->
+    <article class="project-card estacao p-6 text-center relative"
+      data-id="estacao"
+      data-url="https://estacaometeorologicass.wuaze.com"
+      data-desc="Estação meteorológica criada com Esp8266 e sensores de umidade, temperatura e luminosidade.">
+
+      <!-- Fundo decorativo -->
+      <div class="card-bg" aria-hidden="true"></div>
+
+      <!-- Botão de favoritar -->
+      <button class="fav-btn" title="Favoritar" aria-label="Favoritar projeto Estação Meteorológica">⭐</button>
+
+      <div class="card-content">
+        <!-- Ícone do projeto -->
+        <img src="icons/icon-estacao.png"
+          class="w-20 h-20 mx-auto mb-4 rounded-full shadow-md"
+          alt="Ícone da Estação Meteorológica">
+
+        <!-- Nome do projeto -->
+        <h3 class="text-xl font-semibold text-green-400">Estação Meteorológica</h3>
+
+        <!-- Informações de status -->
+        <div class="status-container">
+          <div class="status-badge" data-badge aria-live="polite">
+            <span class="status-icon" data-icon>⏳</span>
+            <span class="status-text" data-text>Verificando...</span>
+          </div>
+          <div class="latency text-sm" data-latency>Latência: –</div>
+          <div class="last-check text-sm" data-last>Última verificação: –</div>
+        </div>
+
+        <!-- Descrição resumida -->
+        <p class="text-gray-300 text-sm mb-4">
+          Monitoramento climático em tempo real com gráficos dinâmicos.
+        </p>
+
+        <!-- Botão de acesso -->
+        <a href="https://estacaometeorologicass.wuaze.com" target="_blank"
+          class="access-btn inline-block bg-green-500 hover:bg-green-600 text-black font-semibold px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+          rel="noopener" aria-label="Abrir Estação Meteorológica">Acessar</a>
+
+        <!-- Contador de acessos -->
+        <div class="mt-2 text-sm">Acessos: <span class="access-count">0</span></div>
+      </div>
+    </article>
+
+    <!-- ==================== CARD: D2FA ==================== -->
+    <article class="project-card d2fa p-6 text-center relative"
+      data-id="d2fa"
+      data-url="https://heitor.wuaze.com/"
+      data-desc="Gerenciador de senhas seguro com criptografia e acesso simplificado.">
+
+      <div class="card-bg" aria-hidden="true"></div>
+      <button class="fav-btn" title="Favoritar" aria-label="Favoritar projeto Gerenciador D2FA">⭐</button>
+
+      <div class="card-content">
+        <img src="icons/icon-d2fa.png"
+          class="w-20 h-20 mx-auto mb-4 rounded-full shadow-md"
+          alt="Ícone do Gerenciador D2FA">
+        <h3 class="text-xl font-semibold text-green-400">Gerenciador D2FA</h3>
+
+        <div class="status-container">
+          <div class="status-badge" data-badge aria-live="polite">
+            <span class="status-icon" data-icon>⏳</span>
+            <span class="status-text" data-text>Verificando...</span>
+          </div>
+          <div class="latency text-sm" data-latency>Latência: –</div>
+          <div class="last-check text-sm" data-last>Última verificação: –</div>
+        </div>
+
+        <p class="text-gray-300 text-sm mb-4">
+          Gerenciamento e armazenamento de senhas online.
+        </p>
+        <a href="https://heitor.wuaze.com/" target="_blank"
+          class="access-btn inline-block bg-green-500 hover:bg-green-600 text-black font-semibold px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+          rel="noopener" aria-label="Abrir Gerenciador D2FA">Acessar</a>
+        <div class="mt-2 text-sm">Acessos: <span class="access-count">0</span></div>
+      </div>
+    </article>
+
+    <!-- ==================== CARD: PORTFÓLIO ==================== -->
+    <article class="project-card portfolio p-6 text-center relative"
+      data-id="portfolio"
+      data-url="https://heitorsouzasoares2025.github.io/Portifolio/"
+      data-desc="Meu portfólio pessoal com projetos, experiências e contatos.">
+
+      <div class="card-bg" aria-hidden="true"></div>
+      <button class="fav-btn" title="Favoritar" aria-label="Favoritar projeto Portfólio">⭐</button>
+
+      <div class="card-content">
+        <img src="icons/icon-portifolio.png"
+          class="w-20 h-20 mx-auto mb-4 rounded-full shadow-md"
+          alt="Ícone do Portfólio">
+        <h3 class="text-xl font-semibold text-green-400">Portfólio</h3>
+
+        <div class="status-container">
+          <div class="status-badge" data-badge aria-live="polite">
+            <span class="status-icon" data-icon>⏳</span>
+            <span class="status-text" data-text>Verificando...</span>
+          </div>
+          <div class="latency text-sm" data-latency>Latência: –</div>
+          <div class="last-check text-sm" data-last>Última verificação: –</div>
+        </div>
+
+        <p class="text-gray-300 text-sm mb-4">
+          Site com meus projetos e experiências profissionais.
+        </p>
+        <a href="https://heitorsouzasoares2025.github.io/Portifolio/" target="_blank"
+          class="access-btn inline-block bg-green-500 hover:bg-green-600 text-black font-semibold px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+          rel="noopener" aria-label="Abrir Portfólio">Acessar</a>
+        <div class="mt-2 text-sm">Acessos: <span class="access-count">0</span></div>
+      </div>
+    </article>
+
+    <!-- ==================== CARD: SITE PESSOAL ==================== -->
+    <article class="project-card site-pessoal p-6 text-center relative"
+      data-id="sitepessoal"
+      data-url="https://heitorsouzasoares2025.github.io/HeitorSS/"
+      data-desc="Site pessoal usado para atividades acadêmicas.">
+
+      <div class="card-bg" aria-hidden="true"></div>
+      <button class="fav-btn" title="Favoritar" aria-label="Favoritar projeto Site Pessoal">⭐</button>
+
+      <div class="card-content">
+        <img src="icons/icon-centralss.jpg"
+          class="w-20 h-20 mx-auto mb-4 rounded-full shadow-md"
+          alt="Ícone do Site Pessoal">
+        <h3 class="text-xl font-semibold text-green-400">Site Pessoal</h3>
+
+        <div class="status-container">
+          <div class="status-badge" data-badge aria-live="polite">
+            <span class="status-icon" data-icon>⏳</span>
+            <span class="status-text" data-text>Verificando...</span>
+          </div>
+          <div class="latency text-sm" data-latency>Latência: –</div>
+          <div class="last-check text-sm" data-last>Última verificação: –</div>
+        </div>
+
+        <p class="text-gray-300 text-sm mb-4">
+          Informações sobre mim, blog e novidades.
+        </p>
+        <a href="https://heitorsouzasoares2025.github.io/HeitorSS/" target="_blank"
+          class="access-btn inline-block bg-green-500 hover:bg-green-600 text-black font-semibold px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+          rel="noopener" aria-label="Abrir Site Pessoal">Acessar</a>
+        <div class="mt-2 text-sm">Acessos: <span class="access-count">0</span></div>
+      </div>
+    </article>
+
+    <!-- ==================== CARD: TO-DO LIST ==================== -->
+    <article class="project-card todo-list p-6 text-center relative"
+      data-id="todolist"
+      data-url="https://heitorsouzasoares2025.github.io/To-dolist/"
+      data-desc="Aplicação de lista de tarefas com autenticação e salvamento online.">
+
+      <div class="card-bg" aria-hidden="true"></div>
+      <button class="fav-btn" title="Favoritar" aria-label="Favoritar projeto To-Do List">⭐</button>
+
+      <div class="card-content">
+        <img src="icons/icon-todolist.png"
+          class="w-20 h-20 mx-auto mb-4 rounded-full shadow-md"
+          alt="Ícone da To-Do List">
+        <h3 class="text-xl font-semibold text-green-400">To-Do List</h3>
+
+        <div class="status-container">
+          <div class="status-badge" data-badge aria-live="polite">
+            <span class="status-icon" data-icon>⏳</span>
+            <span class="status-text" data-text>Verificando...</span>
+          </div>
+          <div class="latency text-sm" data-latency>Latência: –</div>
+          <div class="last-check text-sm" data-last>Última verificação: –</div>
+        </div>
+
+        <p class="text-gray-300 text-sm mb-4">
+          Organize suas tarefas de forma simples e eficaz.
+        </p>
+        <a href="https://heitorsouzasoares2025.github.io/To-dolist/" target="_blank"
+          class="access-btn inline-block bg-green-500 hover:bg-green-600 text-black font-semibold px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+          rel="noopener" aria-label="Abrir To-Do List">Acessar</a>
+        <div class="mt-2 text-sm">Acessos: <span class="access-count">0</span></div>
+      </div>
+    </article>
+  </main>
+
+  <!-- ======================== MODAL DETALHES ======================== -->
+  <!-- Janela modal para informações detalhadas do projeto -->
+  <div id="detailModal" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-[999]"
+       role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="bg-gray-900 text-gray-100 p-6 rounded-lg max-w-md w-11/12 relative">
+      <button id="closeModal" class="absolute top-2 right-3 text-2xl" aria-label="Fechar detalhes">&times;</button>
+      <h2 id="modalTitle" class="text-2xl font-semibold mb-4"></h2>
+      <p id="modalDesc" class="text-sm leading-relaxed"></p>
+    </div>
+  </div>
+
+  <!-- ======================== JAVASCRIPT ======================== -->
+  <!-- Arquivo JS com toda a lógica -->
+  <script src="js/script.js"></script>
+</body>
+</html>
